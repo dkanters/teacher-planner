@@ -144,6 +144,16 @@ npm run build
 npm run typecheck
 ```
 
+### Import curriculum requirements
+
+The ASN curriculum importer downloads every document listed for a jurisdiction and writes one compact, app-ready JSON file with normalized document scope and curriculum statements. It keeps stable ASN IDs, validity years, statement text, codes, and hierarchy; subject, education-level, and language URIs are shortened to their final path segment. Document descriptions and per-document statement counts are omitted to reduce file size. For CAN-ON, a curated list excludes known superseded editions only when the replacement has a newer `valid` year and matching subject and grade coverage; distinct courses remain included.
+
+```bash
+npm run import:curriculum -- CAN-ON curriculum-CAN-ON-summary.json
+```
+
+The optional second argument selects the output path. Existing output files are not overwritten, so choose a new path when refreshing a previous import.
+
 ### Tech stack
 TypeScript, Svelte 4, esbuild, and the Obsidian plugin API.
 
